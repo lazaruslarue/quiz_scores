@@ -1,15 +1,18 @@
 class QuizControler {
-  constructor() {}
+  constructor(QuizService) {
+    this.QuizService = QuizService
+  }
   $onInit() {
     this.newStudent = {
       name: '',
       score: 0,
     }
     this.scores =  [
-      {first: 'joe', last: 'balogna', score: 10},
-      {first: 'joe', last: 'balogna', score: 10},
-      {first: 'joe', last: 'balogna', score: 10},
+      {first: 'joe', score: 10},
+      {first: 'joe', score: 10},
+      {first: 'joe', score: 10},
     ]
+    console.log(this.QuizService.getScores())
   }
   $onChanges(changes) {
     if (changes.quizData) {
@@ -17,6 +20,7 @@ class QuizControler {
     }
   }
   addScore({ score }) {
+    console.log(score);
     if (!score) return
     this.scores.unshift(score)
     this.newScore = {
@@ -26,17 +30,5 @@ class QuizControler {
   }
 }
 
+QuizControler.$inject = ['QuizService']
 export default QuizControler
-// angular.module('quiz.').directive('quiz', [ () => {
-//   return {
-//     restrict: 'AE',
-//     templateUrl: './template.html',
-//     controller: ['$scope',($scope) => {
-//       $scope.students = [
-//         {first: 'joe', last: 'balogna', score: 10},
-//         {first: 'joe', last: 'balogna', score: 10},
-//         {first: 'joe', last: 'balogna', score: 10},
-//       ]
-//     }]
-//   }
-// }])

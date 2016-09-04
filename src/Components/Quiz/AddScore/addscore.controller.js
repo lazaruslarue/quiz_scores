@@ -1,5 +1,5 @@
 class AddScoreController {
-  constructor(EventEmitter) {}
+  constructor() {}
   $onInit() {
     console.log('addscoreinit');
   }
@@ -13,7 +13,8 @@ class AddScoreController {
 
     this.onAddScore({
       $event: {
-        score: this.score
+        score: this.score,
+        name:  this.name
       }
     })
   }

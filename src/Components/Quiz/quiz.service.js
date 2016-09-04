@@ -1,9 +1,10 @@
 class QuizService {
   constructor($cookies) {
     this.$cookies = $cookies
+    $cookies.putObject('scores', {test: 'one'})
   }
   getScores() {
-    return this.$cookes.get('scores').then(r => r.data)
+    return this.$cookies.get('scores')
   }
 }
 

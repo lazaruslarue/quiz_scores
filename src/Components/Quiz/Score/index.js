@@ -5,5 +5,4 @@ export default angular
   .module('score',[])
   .component('scoreList', ScoreComponent)
   .run(function functionName() {
-    console.log('score');
   }).name
