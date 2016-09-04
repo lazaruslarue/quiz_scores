@@ -9,8 +9,7 @@ const QuizComponent = {
       score="$ctrl.newScore"
       on-add-score="$ctrl.addScore($event)"></add-score>
     <scorelist></scorelist>
-    <score-details
-      scores="$ctrl.scores"</score-details>
+    <analysis scores="$ctrl.scores"></analysis>
 
   `
 

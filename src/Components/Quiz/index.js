@@ -5,11 +5,13 @@ import QuizService from './quiz.service'
 // import Score from './Score'
 import Scorelist from './ScoreList'
 import AddScore from './AddScore'
+import Analysis from './Analysis'
 
 const Quiz = angular
   .module('quiz', [
     Scorelist,
-    AddScore
+    AddScore,
+    Analysis
   ])
   .component('quiz', QuizComponent)
   .service('QuizService', QuizService)
