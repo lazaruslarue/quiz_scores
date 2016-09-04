@@ -3,6 +3,9 @@ const ScorelistComponent = {
   bindings: {
     scores: '<',
   },
+  require: {
+    QuizCtrl: '^quiz'
+  },
   controller,
   template: `
     <div class="student-scores">

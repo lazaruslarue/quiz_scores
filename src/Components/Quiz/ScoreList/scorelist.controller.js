@@ -1,9 +1,7 @@
 class ScorelistController {
-  constructor(QuizService) {
-    this.QuizService = QuizService
-  }
+  constructor() {}
   $onInit() {
-    this.scores =  this.QuizService.getScores()
+    this.scores =  this.QuizCtrl.getScores()
   }
   $onChanges(changes) {
 
@@ -11,7 +9,7 @@ class ScorelistController {
   deleteScore(score) {
     var idx = this.scores.indexOf(score)
     this.scores.splice(idx, 1)
-    this.QuizService.putScores(this.scores)
+    this.QuizCtrl.putScores(this.scores)
   }
 }
 

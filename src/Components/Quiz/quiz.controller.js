@@ -11,6 +11,12 @@ class QuizController {
       this.scores = object.assign({}, this.scoreData)
     }
   }
+  getScores() {
+    return this.scores
+  }
+  putScores(scores) {
+    return this.QuizService.putScores(scores)
+  }
   addScore({ score }) {
     console.log(score);
     if (!score) return
