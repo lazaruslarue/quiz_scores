@@ -4,13 +4,14 @@ const QuizComponent = {
   controller,
   template: `
     <h1>Quiz Scores</h1>
-    <div class="quiz">
-      <score-list
-        scores="$ctrl.scores"></scores-list>
-    </div>
+    <h2>Add or remove scores</h2>
     <add-score
       score="$ctrl.newScore"
-    on-add-score="$ctrl.addScore($event)"></add-score>
+      on-add-score="$ctrl.addScore($event)"></add-score>
+    <scorelist></scorelist>
+    <score-details
+      scores="$ctrl.scores"</score-details>
+
   `
 
 }

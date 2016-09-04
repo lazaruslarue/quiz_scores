@@ -1,15 +1,13 @@
 class AddScoreController {
   constructor() {}
-  $onInit() {
-    console.log('addscoreinit');
-  }
+  $onInit() { }
   $onChanges(changes) {
     if (changes.score) {
       this.score = Object.assign({}, this.score)
     }
   }
   onSubmit() {
-    if (!this.score.name || !this.score.value) return
+    if (!this.score.name || !this.score.score) return
 
     this.onAddScore({
       $event: {

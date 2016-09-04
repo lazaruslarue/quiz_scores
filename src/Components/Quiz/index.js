@@ -2,12 +2,13 @@ import angular from 'angular'
 import QuizComponent from './quiz.component'
 import QuizService from './quiz.service'
 
-import Score from './Score'
+// import Score from './Score'
+import Scorelist from './ScoreList'
 import AddScore from './AddScore'
 
 const Quiz = angular
   .module('quiz', [
-    Score,
+    Scorelist,
     AddScore
   ])
   .component('quiz', QuizComponent)

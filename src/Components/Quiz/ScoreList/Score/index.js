@@ -3,6 +3,6 @@ import ScoreComponent from './score.component'
 
 export default angular
   .module('score',[])
-  .component('scoreList', ScoreComponent)
+  .component('score', ScoreComponent)
   .run(function functionName() {
   }).name
