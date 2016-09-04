@@ -5,7 +5,7 @@ class QuizController {
   $onInit() {
     this.scores =  this.QuizService.getScores()
   }
-  $onChanges(changes) { console.log('quiz changes',changes);  }
+  $onChanges(changes) {  }
   getScores() {
     return this.scores
   }

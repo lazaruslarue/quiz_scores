@@ -9,7 +9,6 @@ class QuizService {
     // ] )
   }
   getScores() {
-    console.log(this.$cookies.getObject('scores'));
     return this.$cookies.getObject('scores')
   }
   putScores(scores) {

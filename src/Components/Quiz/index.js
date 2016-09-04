@@ -16,7 +16,6 @@ const Quiz = angular
   .component('quiz', QuizComponent)
   .service('QuizService', QuizService)
   .run(function functionName() {
-    console.log('quiz');
   })
   .name
 
