@@ -4,6 +4,7 @@ import Components from './Components'
 
 angular
   .module('app', [
+    require('angular-cookies'),
     Components
   ])
   .component('app', AppComponent)

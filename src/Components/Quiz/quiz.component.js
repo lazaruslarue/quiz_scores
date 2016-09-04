@@ -4,8 +4,13 @@ const QuizComponent = {
   controller,
   template: `
     <h1>Quiz Scores</h1>
-    <score></score>
-    <button type="button" name="button">Add Score</button>
+    <div class="quiz">
+      <score-list
+        scores="$ctrl.scores"></scores-list>
+      <add-score
+        score="$ctrl.newScore"
+        on-add-score="$ctrl.addScore($event)"></add-score>
+    </div>
   `
 
 }
