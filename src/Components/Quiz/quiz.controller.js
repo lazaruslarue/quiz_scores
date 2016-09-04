@@ -5,12 +5,7 @@ class QuizController {
   $onInit() {
     this.scores =  this.QuizService.getScores()
   }
-  $onChanges(changes) {
-    console.log(changes);
-    if (changes.quizData) {
-      this.scores = object.assign({}, this.scoreData)
-    }
-  }
+  $onChanges(changes) { console.log('quiz changes',changes);  }
   getScores() {
     return this.scores
   }
@@ -18,9 +13,9 @@ class QuizController {
     return this.QuizService.putScores(scores)
   }
   addScore({ score }) {
-    console.log(score);
     if (!score) return
     this.scores.unshift(score)
+    this.newScore = {name: '', score: null}
     this.QuizService.putScores(this.scores)
   }
   removeScore({index}) {
@@ -30,4 +25,5 @@ class QuizController {
 }
 
 QuizController.$inject = ['QuizService']
+
 export default QuizController

@@ -1,8 +1,5 @@
 class Analysis {
   constructor() {}
-  $onChanges(changes) {
-    console.log('changes in analysis',changes);
-  }
   average(){
     let acc = 0;
     this.scores.map((score)=> acc = acc + parseInt(score.score))

@@ -9,7 +9,6 @@ const AnalysisComponent = {
   },
   controller,
   template: `
-    <div>{{$ctrl.scores}}</div>
     <div>Average: {{$ctrl.average()}}</div>
     <div>Min: {{$ctrl.min()}}</div>
     <div>Max: {{$ctrl.max()}}</div>
