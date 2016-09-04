@@ -5,12 +5,12 @@ var ENV = process.env.NODE_ENV;
 
 module.exports = {
   entry: ( ENV == 'production' ?
-           [__dirname + '/src/main.js']
+           [__dirname + '/src/app.js']
            :
            [
             'webpack-dev-server/client?http://localhost:8080',
             'webpack/hot/dev-server',
-            __dirname + '/src/main.js'
+            __dirname + '/src/app.js'
            ]
   ),
   output: {
