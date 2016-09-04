@@ -11,5 +11,8 @@ const AddScoreComponent = {
       <input type="text" placeholder="Name..." ng-model="$ctrl.score.name">
       <input type="text" placeholder="Score..." ng-model="$ctrl.score.value">
       <button type="submit">Add Score</button>
+    </form>
   `
 }
+
+export default AddScoreComponent

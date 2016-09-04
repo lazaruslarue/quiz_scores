@@ -2,8 +2,9 @@ import angular from 'angular'
 import Quiz from './Quiz'
 
 const Components = angular
-  .module('quiz.components', [
+  .module('app.components', [
     Quiz,
+
   ])
   .name
 

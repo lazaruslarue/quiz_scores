@@ -1,5 +1,8 @@
 import ScoreController from './score.controller'
 const ScoreComponent = {
+  bindings: {
+    scores: '<'
+  },
   ScoreController,
   template: `
     <h2>You should see scores here</h2>

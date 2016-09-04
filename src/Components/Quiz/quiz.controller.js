@@ -5,6 +5,11 @@ class QuizControler {
       name: '',
       score: 0,
     }
+    this.scores =  [
+      {first: 'joe', last: 'balogna', score: 10},
+      {first: 'joe', last: 'balogna', score: 10},
+      {first: 'joe', last: 'balogna', score: 10},
+    ]
   }
   $onChanges(changes) {
     if (changes.quizData) {

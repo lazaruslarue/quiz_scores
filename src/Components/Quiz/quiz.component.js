@@ -7,10 +7,10 @@ const QuizComponent = {
     <div class="quiz">
       <score-list
         scores="$ctrl.scores"></scores-list>
-      <add-score
-        score="$ctrl.newScore"
-        on-add-score="$ctrl.addScore($event)"></add-score>
     </div>
+    <add-score
+    score="$ctrl.newScore"
+    on-add-score="$ctrl.addScore($event)"></add-score>
   `
 
 }

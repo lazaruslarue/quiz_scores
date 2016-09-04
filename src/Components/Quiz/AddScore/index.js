@@ -1,10 +1,10 @@
 import angular from 'angular'
 import AddScoreComponent from './addscore.component'
 
-const addScore = angular
-  .module('quiz')
+export default angular
+  .module('addScore',[])
   .component('addScore', AddScoreComponent)
   .value('EventEmitter', payload => ({$event: payload}))
-  .name
-
-export default addScore;
+  .run(function functionName() {
+    console.log('addscore');
+  }).name

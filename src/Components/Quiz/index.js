@@ -3,13 +3,17 @@ import QuizComponent from './quiz.component'
 import QuizService from './quiz.service'
 
 import Score from './Score'
+import AddScore from './AddScore'
 
 const Quiz = angular
-  .module('quiz', [Score])
+  .module('quiz', [
+    Score,
+    AddScore
+  ])
   .component('quiz', QuizComponent)
   .service('QuizService', QuizService)
   .run(function functionName() {
-    console.log('ass');
+    console.log('quiz');
   })
   .name
 

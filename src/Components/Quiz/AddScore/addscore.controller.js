@@ -1,5 +1,8 @@
 class AddScoreController {
   constructor(EventEmitter) {}
+  $onInit() {
+    console.log('addscoreinit');
+  }
   $onChanges(changes) {
     if (changes.score) {
       this.score = Object.assign({}, this.score)
@@ -8,14 +11,12 @@ class AddScoreController {
   onSubmit() {
     if (!this.score.name || !this.score.value) return
 
-    this.onAddScore(
-      EventEmitter({
+    this.onAddScore({
+      $event: {
         score: this.score
-      })
-    )
+      }
+    })
   }
 }
-
-AddScoreController.$inject = ['EventEmitter']
 
 export default AddScoreController
