@@ -1,5 +1,4 @@
 class AddScoreController {
-  constructor() {}
   $onInit() { }
   $onChanges(changes) {
     if (changes.score) {
