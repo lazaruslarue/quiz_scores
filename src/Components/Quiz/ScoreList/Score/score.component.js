@@ -9,8 +9,8 @@ const ScoreComponent = {
   controller,
   template: `
     <div class="student-score">
-      Name: {{$ctrl.score.name}}
-      Score: {{$ctrl.score.score}}
+      Name: <input value="{{$ctrl.score.name}}" ng-model="$ctrl.score.name"></input>
+      Score: <input value="{{$ctrl.score.score}}" ng-model="$ctrl.score.score"></input>
       <button ng-click="$ctrl.delete()" >X</button>
     </div>
   `

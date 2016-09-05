@@ -8,8 +8,8 @@ const AddScoreComponent = {
   controller,
   template: `
     <form name="addScore" ng-submit="$ctrl.onSubmit()">
-      <input type="text" placeholder="Name..." ng-model="$ctrl.score.name">
-      <input type="text" placeholder="Score..." ng-model="$ctrl.score.score">
+      <input type="text" placeholder="Name..." ng-model="$ctrl.score.name" ng-required="true">
+      <input type="text" placeholder="Score..." ng-model="$ctrl.score.score" ng-required="true">
       <button type="submit">Add Score</button>
     </form>
   `
