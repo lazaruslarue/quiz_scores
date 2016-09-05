@@ -1,5 +1,6 @@
 import angular from 'angular'
 import ScoreComponent from './score.component'
+require('./style.scss')
 
 export default angular
   .module('score',[])
