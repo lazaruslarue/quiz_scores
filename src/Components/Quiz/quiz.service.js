@@ -6,9 +6,7 @@ class QuizService {
     return this.$cookies.getObject('scores') || []
   }
   putScores(scores) {
-
-     this.$cookies.putObject('scores', scores)
-    console.log(this.$cookies.getObject('scores', scores));
+    return this.$cookies.putObject('scores', scores)
   }
   removeScore({index}) {
     var scores = this.getScores()

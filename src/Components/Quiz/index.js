@@ -1,5 +1,4 @@
 import angular from 'angular'
-// import angularCookies from 'angular-cookies'
 import QuizComponent from './quiz.component'
 import QuizService from './quiz.service'
 
@@ -10,7 +9,6 @@ import Analysis from './Analysis'
 
 const Quiz = angular
   .module('quiz', [
-    // angularCookies,
     Scorelist,
     AddScore,
     Analysis
@@ -20,6 +18,5 @@ const Quiz = angular
   .run(function functionName() {
   })
   .name
-
 
 export default Quiz
