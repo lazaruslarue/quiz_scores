@@ -28,5 +28,3 @@ currently, deployment fails to correctly package the `angular-cookies` module.
 the application uses webpack to build `/dist/bundle.js` && `/dist/vendor.bundle.js`
 
 webpack configure file is `webpack.config.js`
-
-## the code
