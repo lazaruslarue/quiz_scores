@@ -4,15 +4,19 @@ var webpack = require('webpack');
 var ENV = process.env.NODE_ENV;
 
 module.exports = {
-  entry: ( ENV == 'production' ?
-           [__dirname + '/src/app.js']
-           :
-           [
-            'webpack-dev-server/client?http://localhost:8080',
-            'webpack/hot/dev-server',
-            __dirname + '/src/app.js'
-           ]
-  ),
+  // entry: ( ENV == 'production' ?
+  //          [__dirname + '/src/app.js']
+  //          :
+  //          [
+  //           'webpack-dev-server/client?http://localhost:8080',
+  //           'webpack/hot/dev-server',
+  //           __dirname + '/src/app.js'
+  //          ]
+  // ),
+  entry: {
+    app: __dirname + "/src/app.js",
+    vendor: ["angular", "angular-cookies"],
+  },
   output: {
     path: __dirname + '/dist',
     filename: 'bundle.js'
@@ -21,7 +25,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        loaders: ['babel-loader'],
         include: __dirname,
         exclude: /node_modules/
       },
@@ -44,10 +48,10 @@ module.exports = {
   },
   plugins: ( ENV == 'production' ?
              [
-              new webpack.optimize.UglifyJsPlugin({minimize: true}),
+              new webpack.optimize.UglifyJsPlugin({minimize: true}),new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
              ]
              :
-             [new webpack.HotModuleReplacementPlugin()]
+             [new webpack.HotModuleReplacementPlugin(),new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")]
   ),
   devServer: {
     contentBase: './',

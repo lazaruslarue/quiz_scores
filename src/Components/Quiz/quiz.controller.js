@@ -19,7 +19,6 @@ class QuizController {
     this.QuizService.putScores(this.scores)
   }
   removeScore({index}) {
-    console.log(arguments)
     this.QuizService.removeScore(index)
   }
 }

@@ -8,17 +8,21 @@ const ScoreComponent = {
   },
   controller,
   template: `
-    <div class="student-score">
+    <label class="student-score">
       Name: <input
         ng-model="$ctrl.score.name"
+        name="recordName"
         ng-required="true"
-        pattern="[A-Za-z]+$"></input>
-      Score: <input
+        ng-blur="$valid && $ctrl.blur($event)"
+        ng-keyup="$valid && $ctrl.keyup($event)"
+        pattern="[A-Za-z]+$"></input></label>
+      <label>Score: <input
         type="number"
+        name="recordScore"
         ng-model="$ctrl.score.score"
-        ng-class="{'has-problem': $ctrl.score.score < 65}" ></input>
-      <button ng-click="$ctrl.delete()" >X</button>
-    </div>
+        score-auto-update
+        ng-class="{'has-problem': $ctrl.score.score < 65}" ></input></label>
+      <a ng-click="$ctrl.delete()" >remove score</a><br>
   `
 }
 

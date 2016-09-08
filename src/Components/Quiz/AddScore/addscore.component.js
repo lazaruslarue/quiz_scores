@@ -6,6 +6,7 @@ const AddScoreComponent = {
     onAddScore: '&',
   },
   controller,
+//  todo: this component and the Score component have a good deal of duplicate parts  
   template: `
     <form name="addScore" ng-submit="$ctrl.onSubmit()">
       <input type="text" placeholder="Name..." ng-model="$ctrl.score.name" ng-required="true" pattern="[A-Za-z]+$">

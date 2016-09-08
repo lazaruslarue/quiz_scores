@@ -8,9 +8,15 @@ const ScorelistComponent = {
   },
   controller,
   template: `
-    <div class="student-scores">
-      <score ng-repeat="score in $ctrl.scores track by $index" score="score" index="$index" on-delete="$ctrl.deleteScore(score)" on-update="$ctrl.updateScore(score, prop, value)"></score>
-    </div>
+    <form name="studentScores"
+      ng-submit="$ctrl.onSubmit()">
+        <score
+        ng-repeat="score in $ctrl.scores track by $index"
+        score="score"
+        index="$index"
+        on-delete="$ctrl.deleteScore(score)"
+        on-update="$ctrl.updateScore(score)"></score>
+    </form>
   `
 }
 
