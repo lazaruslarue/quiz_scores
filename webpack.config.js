@@ -29,7 +29,6 @@ module.exports = {
         include: __dirname,
         exclude: /node_modules/
       },
-      { test: /[\/]angular-cookies\.js$/, loader: 'exports?angular.module(\'ngCookies\')' },
       {
         test: /\.(jpe?g|png|gif|svf)$/i,
         loaders: [
