@@ -1,21 +1,32 @@
 # quiz_scores
 a list of student names &amp; test scores. min, max, and average grade.
 
-## run it
-make sure you have webpack installed
-`npm install webpack -g`
-
-then run it
-`npm run start`
-
-[TODO] build it for deployment
-`npm run build`
-currently, this will fail to include the `angular-cookies` module. webpack docs, though... that'll help.
-
 ## criteria
 
     [X] support crud operations on student names and their associated grade
-    [X] support inline editing of student names and grades. changing a test score and 'enter' / 'mouse-end' updates the model
-    [X] statistics shall update after CRUD is performed
     [X] components should validate user input
     [X] students component with grade < 65 should visually indicate failing grade
+    [-] statistics shall update after CRUD is performed
+        (statistics update in real time)
+    [-] support inline editing of student names and grades. changing a test score and 'enter' / 'mouse-end' updates the model
+        (blur & enter key)
+
+## run it
+run it
+
+    `npm run start`
+
+## deploy it
+build it for deployment
+
+    `npm run build`
+
+currently, deployment fails to correctly package the `angular-cookies` module.
+
+## the system
+
+the application uses webpack to build `/dist/bundle.js` && `/dist/vendor.bundle.js`
+
+webpack configure file is `webpack.config.js`
+
+## the code
