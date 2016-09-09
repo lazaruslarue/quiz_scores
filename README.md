@@ -8,7 +8,7 @@ a list of student names &amp; test scores. min, max, and average grade.
     [X] students component with grade < 65 should visually indicate failing grade
     [-] statistics shall update after CRUD is performed
         (statistics update in real time)
-    [-] support inline editing of student names and grades. changing a test score and 'enter' / 'mouse-end' updates the model
+    [X] support inline editing of student names and grades. changing a test score and 'enter' / 'mouse-end' updates the model
         (blur & enter key)
 
 ## run it
