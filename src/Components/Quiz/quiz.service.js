@@ -1,5 +1,5 @@
 class QuizService {
-  constructor($cookies) {
+  constructor() {
     this.storage = window.localStorage
   }
   getScores() {
@@ -15,6 +15,5 @@ class QuizService {
   }
 }
 
-QuizService.$inject = ['$cookies']
 
 export default QuizService

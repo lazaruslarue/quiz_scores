@@ -8,7 +8,7 @@ import AddScore from './AddScore'
 import Analysis from './Analysis'
 
 const Quiz = angular
-  .module('quiz', [
+  .module('app.quiz', [
     Scorelist,
     AddScore,
     Analysis
