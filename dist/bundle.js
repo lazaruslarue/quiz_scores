@@ -1,1 +1,1022 @@
-webpackJsonp([0],[function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}var o=n(1),u=r(o),i=n(3),c=r(i),s=n(5),a=r(s),l=n(6),f=r(l);u["default"].module("app",[c["default"],f["default"]]).component("app",a["default"])},,,,,function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n={template:"\n    <quiz></quiz>\n  "};t["default"]=n},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(1),u=r(o),i=n(7),c=r(i),s=u["default"].module("app.components",[c["default"]]).name;t["default"]=s},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(1),u=r(o),i=n(8),c=r(i),s=n(10),a=r(s),l=n(11),f=r(l),d=n(21),p=r(d),v=n(24),h=r(v),m=u["default"].module("quiz",[f["default"],p["default"],h["default"]]).component("quiz",c["default"]).service("QuizService",a["default"]).run(function(){}).name;t["default"]=m},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(9),u=r(o),i={controller:u["default"],template:'\n    <h1>Quiz Scores</h1>\n    <h2>Add or remove scores</h2>\n    <scorelist\n      ></scorelist>\n    <add-score\n      score="$ctrl.newScore"\n      on-add-score="$ctrl.addScore($event)"></add-score>\n    <analysis scores="$ctrl.scores"></analysis>\n\n  '};t["default"]=i},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(){function e(t){n(this,e),this.QuizService=t}return r(e,[{key:"$onInit",value:function(){this.scores=this.QuizService.getScores()}},{key:"$onChanges",value:function(e){}},{key:"getScores",value:function(){return this.scores}},{key:"putScores",value:function(e){return this.QuizService.putScores(e)}},{key:"addScore",value:function(e){var t=e.score;t&&(this.scores.unshift(t),this.newScore={name:"",score:null},this.QuizService.putScores(this.scores))}},{key:"removeScore",value:function(e){var t=e.index;this.QuizService.removeScore(t)}}]),e}();o.$inject=["QuizService"],t["default"]=o},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(){function e(t){n(this,e),this.$cookies=t}return r(e,[{key:"getScores",value:function(){return this.$cookies.getObject("scores")||[]}},{key:"putScores",value:function(e){return this.$cookies.putObject("scores",e)}},{key:"removeScore",value:function(e){var t=e.index,n=this.getScores();return n.splice(t,1),this.putScores(n)}}]),e}();o.$inject=["$cookies"],t["default"]=o},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(1),u=r(o),i=n(12),c=r(i),s=n(14),a=r(s);t["default"]=u["default"].module("scorelist",[a["default"]]).component("scorelist",c["default"]).run(function(){}).name},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(13),u=r(o),i={bindings:{scores:"<"},require:{QuizCtrl:"^quiz"},controller:u["default"],template:'\n    <form name="studentScores"\n      ng-submit="$ctrl.onSubmit()">\n        <score\n        ng-repeat="score in $ctrl.scores track by $index"\n        score="score"\n        index="$index"\n        on-delete="$ctrl.deleteScore(score)"\n        on-update="$ctrl.updateScore(score)"></score>\n    </form>\n  '};t["default"]=i},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(){function e(){n(this,e)}return r(e,[{key:"$onInit",value:function(){this.scores=this.QuizCtrl.getScores()}},{key:"deleteScore",value:function(e){var t=this.scores.indexOf(e);this.scores.splice(t,1),this.QuizCtrl.putScores(this.scores)}},{key:"updateScore",value:function(e){var t=this.scores.indexOf(e);this.scores[t]=e,this.QuizCtrl.putScores(this.scores)}}]),e}();t["default"]=o},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(1),u=r(o),i=n(15),c=r(i);n(17),t["default"]=u["default"].module("score",[]).component("score",c["default"]).run(function(){}).name},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(16),u=r(o),i={bindings:{score:"<",index:"<",onDelete:"&",onUpdate:"&"},controller:u["default"],template:'\n    <label class="student-score">\n      Name: <input\n        ng-model="$ctrl.score.name"\n        name="recordName"\n        ng-required="true"\n        ng-blur="$valid && $ctrl.blur($event)"\n        ng-keyup="$valid && $ctrl.keyup($event)"\n        pattern="[A-Za-z]+$"></input></label>\n      <label>Score: <input\n        type="number"\n        name="recordScore"\n        ng-model="$ctrl.score.score"\n        score-auto-update\n        ng-class="{\'has-problem\': $ctrl.score.score < 65}" ></input></label>\n      <a ng-click="$ctrl.delete()" >remove score</a><br>\n  '};t["default"]=i},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(){function e(){n(this,e)}return r(e,[{key:"delete",value:function(){this.onDelete()}},{key:"blur",value:function(e){this.score.name&&this.score.score&&this.onUpdate()}},{key:"keyup",value:function(e){"Enter"===e.key&&this.onUpdate()}}]),e}();t["default"]=o},function(e,t,n){var r=n(18);"string"==typeof r&&(r=[[e.id,r,""]]);n(20)(r,{});r.locals&&(e.exports=r.locals)},function(e,t,n){t=e.exports=n(19)(),t.push([e.id,".has-problem{color:red;background-color:#ff0}",""])},function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var n=this[t];n[2]?e.push("@media "+n[2]+"{"+n[1]+"}"):e.push(n[1])}return e.join("")},e.i=function(t,n){"string"==typeof t&&(t=[[null,t,""]]);for(var r={},o=0;o<this.length;o++){var u=this[o][0];"number"==typeof u&&(r[u]=!0)}for(o=0;o<t.length;o++){var i=t[o];"number"==typeof i[0]&&r[i[0]]||(n&&!i[2]?i[2]=n:n&&(i[2]="("+i[2]+") and ("+n+")"),e.push(i))}},e}},function(e,t,n){function r(e,t){for(var n=0;n<e.length;n++){var r=e[n],o=p[r.id];if(o){o.refs++;for(var u=0;u<o.parts.length;u++)o.parts[u](r.parts[u]);for(;u<r.parts.length;u++)o.parts.push(a(r.parts[u],t))}else{for(var i=[],u=0;u<r.parts.length;u++)i.push(a(r.parts[u],t));p[r.id]={id:r.id,refs:1,parts:i}}}}function o(e){for(var t=[],n={},r=0;r<e.length;r++){var o=e[r],u=o[0],i=o[1],c=o[2],s=o[3],a={css:i,media:c,sourceMap:s};n[u]?n[u].parts.push(a):t.push(n[u]={id:u,parts:[a]})}return t}function u(e,t){var n=m(),r=g[g.length-1];if("top"===e.insertAt)r?r.nextSibling?n.insertBefore(t,r.nextSibling):n.appendChild(t):n.insertBefore(t,n.firstChild),g.push(t);else{if("bottom"!==e.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");n.appendChild(t)}}function i(e){e.parentNode.removeChild(e);var t=g.indexOf(e);t>=0&&g.splice(t,1)}function c(e){var t=document.createElement("style");return t.type="text/css",u(e,t),t}function s(e){var t=document.createElement("link");return t.rel="stylesheet",u(e,t),t}function a(e,t){var n,r,o;if(t.singleton){var u=y++;n=b||(b=c(t)),r=l.bind(null,n,u,!1),o=l.bind(null,n,u,!0)}else e.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(n=s(t),r=d.bind(null,n),o=function(){i(n),n.href&&URL.revokeObjectURL(n.href)}):(n=c(t),r=f.bind(null,n),o=function(){i(n)});return r(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;r(e=t)}else o()}}function l(e,t,n,r){var o=n?"":r.css;if(e.styleSheet)e.styleSheet.cssText=_(t,o);else{var u=document.createTextNode(o),i=e.childNodes;i[t]&&e.removeChild(i[t]),i.length?e.insertBefore(u,i[t]):e.appendChild(u)}}function f(e,t){var n=t.css,r=t.media;if(r&&e.setAttribute("media",r),e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}function d(e,t){var n=t.css,r=t.sourceMap;r&&(n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(r))))+" */");var o=new Blob([n],{type:"text/css"}),u=e.href;e.href=URL.createObjectURL(o),u&&URL.revokeObjectURL(u)}var p={},v=function(e){var t;return function(){return"undefined"==typeof t&&(t=e.apply(this,arguments)),t}},h=v(function(){return/msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase())}),m=v(function(){return document.head||document.getElementsByTagName("head")[0]}),b=null,y=0,g=[];e.exports=function(e,t){t=t||{},"undefined"==typeof t.singleton&&(t.singleton=h()),"undefined"==typeof t.insertAt&&(t.insertAt="bottom");var n=o(e);return r(n,t),function(e){for(var u=[],i=0;i<n.length;i++){var c=n[i],s=p[c.id];s.refs--,u.push(s)}if(e){var a=o(e);r(a,t)}for(var i=0;i<u.length;i++){var s=u[i];if(0===s.refs){for(var l=0;l<s.parts.length;l++)s.parts[l]();delete p[s.id]}}}};var _=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join("\n")}}()},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(1),u=r(o),i=n(22),c=r(i);t["default"]=u["default"].module("addScore",[]).component("addScore",c["default"]).name},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(23),u=r(o),i={bindings:{score:"<",onAddScore:"&"},controller:u["default"],template:'\n    <form name="addScore" ng-submit="$ctrl.onSubmit()">\n      <input type="text" placeholder="Name..." ng-model="$ctrl.score.name" ng-required="true" pattern="[A-Za-z]+$">\n      <input type="number" placeholder="Score..." ng-model="$ctrl.score.score" ng-required="true" >\n      <button type="submit">Add Score</button>\n    </form>\n  '};t["default"]=i},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(){function e(){n(this,e)}return r(e,[{key:"$onInit",value:function(){}},{key:"$onChanges",value:function(e){e.score&&(this.score=Object.assign({},this.score))}},{key:"onSubmit",value:function(){this.score.name&&this.score.score&&this.onAddScore({$event:{score:this.score,name:this.name}})}}]),e}();t["default"]=o},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(1),u=r(o),i=n(25),c=r(i);t["default"]=u["default"].module("analysis",[]).component("analysis",c["default"]).name},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(26),u=r(o),i={bindings:{scores:"<"},require:{QuizCtrl:"^quiz"},controller:u["default"],template:"\n    <div>Average: {{$ctrl.average()}}</div>\n    <div>Min: {{$ctrl.min()}}</div>\n    <div>Max: {{$ctrl.max()}}</div>\n  "};t["default"]=i},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(){function e(){n(this,e)}return r(e,[{key:"average",value:function(){var e=0;return this.scores.map(function(t){return e+=parseInt(t.score)}),e/this.scores.length}},{key:"min",value:function(){var e=this.scores.map(function(e){var t=e.score;return t});return e.sort(function(e,t){return e>t}),e[0]}},{key:"max",value:function(){var e=this.scores.map(function(e){var t=e.score;return t});return e.sort(function(e,t){return e<t}),e[0]}}]),e}();t["default"]=o}]);
+webpackJsonp([0],[
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _app = __webpack_require__(1);
+
+	var _app2 = _interopRequireDefault(_app);
+
+	var _Components = __webpack_require__(2);
+
+	var _Components2 = _interopRequireDefault(_Components);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	__webpack_require__(24)();
+	// import angular from 'angular'
+	// import ngCookies   from 'angular-cookies'
+
+
+	var angularCookies = angular.module('ngCookies').name;
+	angular.module('app', [angular.module('ngCookies').name, _Components2.default]).config(function ($cookiesProvider) {
+	  $cookiesProvider.defaults = {
+	    domain: 'localhost',
+	    secure: true
+	  };
+	}).component('app', _app2.default);
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var AppComponent = {
+	  template: "\n    <quiz></quiz>\n  "
+	};
+	exports.default = AppComponent;
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _Quiz = __webpack_require__(3);
+
+	var _Quiz2 = _interopRequireDefault(_Quiz);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Components = angular.module('app.components', [_Quiz2.default]).name; // import angular from 'angular'
+	exports.default = Components;
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _angular = __webpack_require__(4);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _quiz = __webpack_require__(5);
+
+	var _quiz2 = _interopRequireDefault(_quiz);
+
+	var _quiz3 = __webpack_require__(7);
+
+	var _quiz4 = _interopRequireDefault(_quiz3);
+
+	var _ScoreList = __webpack_require__(8);
+
+	var _ScoreList2 = _interopRequireDefault(_ScoreList);
+
+	var _AddScore = __webpack_require__(18);
+
+	var _AddScore2 = _interopRequireDefault(_AddScore);
+
+	var _Analysis = __webpack_require__(21);
+
+	var _Analysis2 = _interopRequireDefault(_Analysis);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Quiz = _angular2.default.module('app.quiz', [_ScoreList2.default, _AddScore2.default, _Analysis2.default]).component('quiz', _quiz2.default).service('QuizService', _quiz4.default).run(function functionName() {}).name;
+
+	// import Score from './Score'
+	exports.default = Quiz;
+
+/***/ },
+/* 4 */,
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _quiz = __webpack_require__(6);
+
+	var _quiz2 = _interopRequireDefault(_quiz);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var QuizComponent = {
+	  controller: _quiz2.default,
+	  template: '\n    <h1>Quiz Scores</h1>\n    <h2>Add or remove scores</h2>\n    <scorelist\n      ></scorelist>\n    <add-score\n      score="$ctrl.newScore"\n      on-add-score="$ctrl.addScore($event)"></add-score>\n    <analysis scores="$ctrl.scores"></analysis>\n\n  '
+
+	};
+
+	exports.default = QuizComponent;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var QuizController = function () {
+	  function QuizController(QuizService) {
+	    _classCallCheck(this, QuizController);
+
+	    this.QuizService = QuizService;
+	  }
+
+	  _createClass(QuizController, [{
+	    key: '$onInit',
+	    value: function $onInit() {
+	      this.scores = this.QuizService.getScores();
+	    }
+	  }, {
+	    key: '$onChanges',
+	    value: function $onChanges(changes) {}
+	  }, {
+	    key: 'getScores',
+	    value: function getScores() {
+	      return this.scores;
+	    }
+	  }, {
+	    key: 'putScores',
+	    value: function putScores(scores) {
+	      return this.QuizService.putScores(scores);
+	    }
+	  }, {
+	    key: 'addScore',
+	    value: function addScore(_ref) {
+	      var score = _ref.score;
+
+	      if (!score) return;
+	      this.scores.unshift(score);
+	      this.newScore = { name: '', score: null };
+	      this.QuizService.putScores(this.scores);
+	    }
+	  }, {
+	    key: 'removeScore',
+	    value: function removeScore(_ref2) {
+	      var index = _ref2.index;
+
+	      this.QuizService.removeScore(index);
+	    }
+	  }]);
+
+	  return QuizController;
+	}();
+
+	QuizController.$inject = ['QuizService'];
+
+	exports.default = QuizController;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var QuizService = function () {
+	  function QuizService($cookies) {
+	    _classCallCheck(this, QuizService);
+
+	    this.$cookies = $cookies;
+	    this.storage = window.localStorage;
+	  }
+
+	  _createClass(QuizService, [{
+	    key: 'getScores',
+	    value: function getScores() {
+	      console.log(this.$cookies);
+	      debugger;
+	      return JSON.parse(this.storage.getItem('scores')) || [];
+	      // return this.$cookies.getObject('scores') || []
+	    }
+	  }, {
+	    key: 'putScores',
+	    value: function putScores(scores) {
+	      // console.log(this.$cookies);
+	      // this.$cookies.putObject('scores', 'test')
+	      // console.log( this.$cookies.getObject('scores') );
+	      return this.storage.scores = JSON.stringify(scores);
+	      // return this.$cookies.putObject('scores', scores)
+	    }
+	  }, {
+	    key: 'removeScore',
+	    value: function removeScore(_ref) {
+	      var index = _ref.index;
+
+	      var scores = this.getScores();
+	      scores.splice(index, 1);
+	      return this.putScores(scores);
+	    }
+	  }]);
+
+	  return QuizService;
+	}();
+
+	QuizService.$inject = ['$cookies'];
+
+	exports.default = QuizService;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _angular = __webpack_require__(4);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _scorelist = __webpack_require__(9);
+
+	var _scorelist2 = _interopRequireDefault(_scorelist);
+
+	var _Score = __webpack_require__(11);
+
+	var _Score2 = _interopRequireDefault(_Score);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// import ScoreAutoUpdate from './scoreAutoUpdate.directive'
+	// import NameAutoUpdate from './nameAutoUpdate.directive'
+	exports.default = _angular2.default.module('scorelist', [_Score2.default])
+	// .directive('nameAutoUpdate', ()=> new NameAutoUpdate)
+	// .directive('scoreAutoUpdate', ()=> new ScoreAutoUpdate)
+	.component('scorelist', _scorelist2.default).run(function functionName() {}).name;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _scorelist = __webpack_require__(10);
+
+	var _scorelist2 = _interopRequireDefault(_scorelist);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ScorelistComponent = {
+	  bindings: {
+	    scores: '<'
+	  },
+	  require: {
+	    QuizCtrl: '^quiz'
+	  },
+	  controller: _scorelist2.default,
+	  template: '\n    <form name="studentScores"\n      ng-submit="$ctrl.onSubmit()">\n        <score\n        ng-repeat="score in $ctrl.scores track by $index"\n        score="score"\n        index="$index"\n        on-delete="$ctrl.deleteScore(score)"\n        on-update="$ctrl.updateScore(score)"></score>\n    </form>\n  '
+	};
+
+	exports.default = ScorelistComponent;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var ScorelistController = function () {
+	  function ScorelistController() {
+	    _classCallCheck(this, ScorelistController);
+	  }
+
+	  _createClass(ScorelistController, [{
+	    key: "$onInit",
+	    value: function $onInit() {
+	      this.scores = this.QuizCtrl.getScores();
+	    }
+	  }, {
+	    key: "deleteScore",
+	    value: function deleteScore(score) {
+	      var idx = this.scores.indexOf(score);
+	      this.scores.splice(idx, 1);
+	      this.QuizCtrl.putScores(this.scores);
+	    }
+	  }, {
+	    key: "updateScore",
+	    value: function updateScore(score) {
+	      var idx = this.scores.indexOf(score);
+	      this.scores[idx] = score;
+	      this.QuizCtrl.putScores(this.scores);
+	    }
+	  }]);
+
+	  return ScorelistController;
+	}();
+
+	exports.default = ScorelistController;
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _angular = __webpack_require__(4);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _score = __webpack_require__(12);
+
+	var _score2 = _interopRequireDefault(_score);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	__webpack_require__(14);
+
+	exports.default = _angular2.default.module('score', []).component('score', _score2.default).run(function functionName() {}).name;
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _score = __webpack_require__(13);
+
+	var _score2 = _interopRequireDefault(_score);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ScoreComponent = {
+	  bindings: {
+	    score: '<',
+	    index: '<',
+	    onDelete: '&',
+	    onUpdate: '&'
+	  },
+	  controller: _score2.default,
+	  template: '\n    <label class="student-score">\n      Name: <input\n        ng-model="$ctrl.score.name"\n        name="recordName"\n        ng-required="true"\n        ng-blur="$valid && $ctrl.blur($event)"\n        ng-keyup="$valid && $ctrl.keyup($event)"\n        pattern="[A-Za-z]+$"></input></label>\n      <label>Score: <input\n        type="number"\n        name="recordScore"\n        ng-model="$ctrl.score.score"\n        score-auto-update\n        ng-class="{\'has-problem\': $ctrl.score.score < 65}" ></input></label>\n      <a ng-click="$ctrl.delete()" >remove score</a><br>\n  '
+	};
+
+	exports.default = ScoreComponent;
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var ScoreController = function () {
+	  function ScoreController() {
+	    _classCallCheck(this, ScoreController);
+	  }
+
+	  _createClass(ScoreController, [{
+	    key: "delete",
+	    value: function _delete() {
+	      this.onDelete();
+	    }
+	  }, {
+	    key: "blur",
+	    value: function blur(evt) {
+	      debugger;
+	      if (!this.score.name || !this.score.score) return;
+	      debugger;
+	      this.onUpdate();
+	    }
+	  }, {
+	    key: "keyup",
+	    value: function keyup(evt) {
+	      if (evt.key !== "Enter") return;
+	      this.onUpdate();
+	    }
+	  }]);
+
+	  return ScoreController;
+	}();
+
+	exports.default = ScoreController;
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(15);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(17)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./style.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(16)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".has-problem {\n  color: red;\n  background-color: yellow; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _angular = __webpack_require__(4);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _addscore = __webpack_require__(19);
+
+	var _addscore2 = _interopRequireDefault(_addscore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _angular2.default.module('addScore', []).component('addScore', _addscore2.default).name;
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _addscore = __webpack_require__(20);
+
+	var _addscore2 = _interopRequireDefault(_addscore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var AddScoreComponent = {
+	  bindings: {
+	    score: '<',
+	    onAddScore: '&'
+	  },
+	  controller: _addscore2.default,
+	  //  todo: this component and the Score component have a good deal of duplicate parts  
+	  template: '\n    <form name="addScore" ng-submit="$ctrl.onSubmit()">\n      <input type="text" placeholder="Name..." ng-model="$ctrl.score.name" ng-required="true" pattern="[A-Za-z]+$">\n      <input type="number" placeholder="Score..." ng-model="$ctrl.score.score" ng-required="true" >\n      <button type="submit">Add Score</button>\n    </form>\n  '
+	};
+
+	exports.default = AddScoreComponent;
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var AddScoreController = function () {
+	  function AddScoreController() {
+	    _classCallCheck(this, AddScoreController);
+	  }
+
+	  _createClass(AddScoreController, [{
+	    key: "$onInit",
+	    value: function $onInit() {}
+	  }, {
+	    key: "$onChanges",
+	    value: function $onChanges(changes) {
+	      if (changes.score) {
+	        this.score = Object.assign({}, this.score);
+	      }
+	    }
+	  }, {
+	    key: "onSubmit",
+	    value: function onSubmit() {
+	      if (!this.score.name || !this.score.score) return;
+
+	      this.onAddScore({
+	        $event: {
+	          score: this.score,
+	          name: this.name
+	        }
+	      });
+	    }
+	  }]);
+
+	  return AddScoreController;
+	}();
+
+	exports.default = AddScoreController;
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _angular = __webpack_require__(4);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _analysis = __webpack_require__(22);
+
+	var _analysis2 = _interopRequireDefault(_analysis);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _angular2.default.module('analysis', []).component('analysis', _analysis2.default).name;
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _analysis = __webpack_require__(23);
+
+	var _analysis2 = _interopRequireDefault(_analysis);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var AnalysisComponent = {
+	  bindings: {
+	    scores: '<'
+	  },
+	  require: {
+	    QuizCtrl: '^quiz'
+	  },
+	  controller: _analysis2.default,
+	  template: '\n    <div>Average: {{$ctrl.average()}}</div>\n    <div>Min: {{$ctrl.min()}}</div>\n    <div>Max: {{$ctrl.max()}}</div>\n  '
+	};
+
+	exports.default = AnalysisComponent;
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Analysis = function () {
+	  function Analysis() {
+	    _classCallCheck(this, Analysis);
+	  }
+
+	  _createClass(Analysis, [{
+	    key: "average",
+	    value: function average() {
+	      var acc = 0;
+	      this.scores.map(function (score) {
+	        return acc = acc + parseInt(score.score);
+	      });
+	      return acc / this.scores.length;
+	    }
+	  }, {
+	    key: "min",
+	    value: function min() {
+	      var scores = this.scores.map(function (_ref) {
+	        var score = _ref.score;
+	        return score;
+	      });
+	      scores.sort(function (a, b) {
+	        return a > b;
+	      });
+	      return scores[0];
+	    }
+	  }, {
+	    key: "max",
+	    value: function max() {
+	      var scores = this.scores.map(function (_ref2) {
+	        var score = _ref2.score;
+	        return score;
+	      });
+	      scores.sort(function (a, b) {
+	        return a < b;
+	      });
+	      return scores[0];
+	    }
+	  }]);
+
+	  return Analysis;
+	}();
+
+	exports.default = Analysis;
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = function functionName() {
+	  __webpack_require__(4);
+	  __webpack_require__(25);
+	};
+
+/***/ }
+]);
