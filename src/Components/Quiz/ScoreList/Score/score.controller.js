@@ -5,9 +5,7 @@ class ScoreController {
     this.onDelete()
   }
   blur(evt) {
-    debugger
     if (!this.score.name || !this.score.score) return
-    debugger
     this.onUpdate()
   }
   keyup(evt) {
