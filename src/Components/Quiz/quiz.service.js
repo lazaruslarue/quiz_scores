@@ -1,12 +1,12 @@
 class QuizService {
   constructor($cookies) {
-    this.$cookies = $cookies
+    this.storage = window.localStorage
   }
   getScores() {
-    return this.$cookies.getObject('scores') || []
+    return JSON.parse(this.storage.getItem('scores')) || []
   }
   putScores(scores) {
-    return this.$cookies.putObject('scores', scores)
+    return this.storage.scores = JSON.stringify(scores)
   }
   removeScore({index}) {
     var scores = this.getScores()
